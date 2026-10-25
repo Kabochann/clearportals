@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "clearportals",
+  "version": "${version}",
+  "name": "Clear Portals",
+  "description": "Deixa os portais translucidos para voce enxergar atraves deles. Etapa 1: visual translucido. Etapa 2 (em desenvolvimento): ver a outra dimensao pelo portal.",
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.clearportals.ClearPortalsClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": ">=26.3 <26.4",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
