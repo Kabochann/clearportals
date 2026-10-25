@@ -23,12 +23,19 @@ jobs:
           gradle-version: 9.6.0
 
       - name: Compilar
-        run: gradle build
+        run: |
+          FILE=$(find . -name settings.gradle -not -path './.git/*' | head -1)
+          if [ -z "$FILE" ]; then
+            echo "Nao achei o settings.gradle em nenhuma pasta. Envie os arquivos que faltam."
+            exit 1
+          fi
+          cd "$(dirname "$FILE")"
+          gradle build
 
       - name: Guardar o mod pronto
         uses: actions/upload-artifact@v4
         with:
           name: clear-portals-mod
           path: |
-            build/libs/*.jar
-            !build/libs/*-sources.jar
+            **/build/libs/*.jar
+            !**/build/libs/*-sources.jar
